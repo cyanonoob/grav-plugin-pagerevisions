@@ -1,5 +1,5 @@
 # Pagerevisions Plugin
-Based on https://github.com/david-szabo97/grav-plugin-admin-addon-revisions, updated for Grav 1.7.x
+Based on https://github.com/david-szabo97/grav-plugin-admin-addon-revisions, updated for Grav 1.7.x (with the help of @ricardo118)
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
 
