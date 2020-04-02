@@ -35,7 +35,7 @@ If you use the Admin Plugin, you can install the plugin directly by browsing the
 
 ## Configuration
 
-Before configuring this plugin, you should copy the `user/plugins/admin-addon-revisions/admin-addon-revisions.yaml` to `user/config/plugins/admin-addon-revisions.yaml` and only edit that copy.
+Before configuring this plugin, you should copy the `user/plugins/pagerevisions/pagerevisions.yaml` to `user/config/plugins/pagerevisions.yaml` and only edit that copy.
 
 Here is the default configuration and an explanation of available options:
 
