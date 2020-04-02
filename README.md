@@ -1,10 +1,6 @@
 # Pagerevisions Plugin
 Based on [Admin Addon Revisions by David Szabo](https://github.com/david-szabo97/grav-plugin-admin-addon-revisions), updated for Grav 1.7.x (with the help of [ricardo118](https://github.com/ricardo118))
 
-Configuration 
-
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
-
 The **Pagerevisions** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav). Page revisions for Grav
 
 ## Installation
