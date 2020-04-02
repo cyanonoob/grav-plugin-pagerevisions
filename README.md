@@ -1,5 +1,7 @@
 # Pagerevisions Plugin
-Based on [Admin Addon Revisions by David Szabo](https://github.com/david-szabo97/grav-plugin-admin-addon-revisions), updated for Grav 1.7.x (with the help of [ricardo118](https://github.com/ricardo118)
+Based on [Admin Addon Revisions by David Szabo](https://github.com/david-szabo97/grav-plugin-admin-addon-revisions), updated for Grav 1.7.x (with the help of [ricardo118](https://github.com/ricardo118))
+
+Configuration 
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
 
@@ -33,25 +35,43 @@ If you use the Admin Plugin, you can install the plugin directly by browsing the
 
 ## Configuration
 
-Before configuring this plugin, you should copy the `user/plugins/pagerevisions/pagerevisions.yaml` to `user/config/plugins/pagerevisions.yaml` and only edit that copy.
+Before configuring this plugin, you should copy the `user/plugins/admin-addon-revisions/admin-addon-revisions.yaml` to `user/config/plugins/admin-addon-revisions.yaml` and only edit that copy.
 
 Here is the default configuration and an explanation of available options:
 
 ```yaml
 enabled: true
+directory: .revs
+limit:
+  maximum: 10
+  older: 1 month
+ignore_files: []
 ```
 
-Note that if you use the Admin Plugin, a file with your configuration named pagerevisions.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
+* `directory` - revisions will be stored in this folder inside the page's folder
+
+* `limit.maximum` - limits the number of revisions per page (use `0` to disable)
+
+* `limit.older` - limits the number of revisions per page by checking the creation date of the revision, works with any `strtotime` compatible string. (1 month, 2 months, 1 day, 30 days, etc.)  (use `0` to disable)
+
+* `ignore_files` - an array of regular expressions to ignore files when looking for changes between revisions
+
+  In this example we ignore all `png` and `jpg` files in the `test` page's folder.
+  ```
+  /pages\/test\/(.*).png$/
+  /pages\/test\/(.*).jpg$/
+  ```
+  If you want to ignore `png` files in all pages' folders then you can use something like this:
+  ```
+  /png$/
+  ```
 
 ## Usage
 
-**Describe how to use the plugin.**
-
-## Credits
-
-**Did you incorporate third-party code? Want to thank somebody?**
+A **Revisions** link will appear in the **Admin** navigation sidebar. By navigating to the **Revisions** you can check the differences and delete/revert a specific revision.
 
 ## To Do
 
-- [ ] Future plans, if any
+- [ ] Translation support
+
 
