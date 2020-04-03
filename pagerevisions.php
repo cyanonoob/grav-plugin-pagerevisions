@@ -65,6 +65,25 @@ class PagerevisionsPlugin extends Plugin {
       'onAdminMenu' => ['onAdminMenu', 0],
       'onAssetsInitialized' => ['onAssetsInitialized', 0],
     ]);
+    
+    // Enable language translations
+
+    // $translations = 'this.GravAdmin = this.GravAdmin || {}; if (!this.GravAdmin.translations) this.GravAdmin.translations = {}; ' . PHP_EOL . 'this.GravAdmin.translations.PLUGIN_REVISIONS = {';
+    // $strings = [
+    //     'REVERT',
+    //     'DELETE'
+    //   ];
+
+    //   foreach ($strings as $string) {
+    //     $separator = (end($strings) === $string) ? '' : ',';
+    //     $translations .= '"' . $string . '": "' . htmlspecialchars($this->admin::translate('PLUGIN_REVISIONS.' . $string)) . '"' . $separator;
+    //   }
+
+    // $translations .= '};';
+    // $translations_actual_state = $this->config->get('system.languages.translations');
+    // $this->config->set('system.languages.translations', true);
+    // $this->config->set('system.languages.translations', $translations_actual_state);
+
   }
 
   public function onAssetsInitialized() {
@@ -74,7 +93,9 @@ class PagerevisionsPlugin extends Plugin {
   public function onAdminMenu() {
     $twig = $this->grav['twig'];
     $twig->plugins_hooked_nav = (isset($twig->plugins_hooked_nav)) ? $twig->plugins_hooked_nav : [];
-    $twig->plugins_hooked_nav['Revisions'] = [
+    $l = $this->grav['language'];
+    $menutitle = $l->translate(['PLUGIN_PAGEREVISIONS.REVISIONS']);
+    $twig->plugins_hooked_nav[$menutitle] = [
       'location' => self::PAGE_LOCATION,
       'icon' => 'fa-file-text'
     ];

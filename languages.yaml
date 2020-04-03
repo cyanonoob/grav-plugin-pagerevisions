@@ -1,4 +1,32 @@
 en:
   PLUGIN_PAGEREVISIONS:
-    TEXT_VARIABLE: Text Variable
-    TEXT_VARIABLE_HELP: Text to add to the top of a page
+    REVERT: "Revert"
+    DELETE: "Delete"
+    CHANGES_SINCE: "All changes since the %d revision (comparing %d to current content)"
+    CHANGES: "Changes"
+    NO_CHANGES: "No changes"
+    REVISIONS: "Revisions"
+    ADDED: "Added"
+    REMOVED: "Removed"
+    RENAMED: "Renamed"
+    PAGES: "Pages"
+    MANAGE_REVISIONS: "Manage revisions"
+    MANAGE_REVISION: "Manage revision"
+    DELETE_ALL: "Delete all"
+    CURRENT: "Current revision"
+nl:
+  PLUGIN_PAGEREVISIONS:
+    REVERT: "Terugzetten"
+    DELETE: "Verwijderen"
+    CHANGES_SINCE: "Alle wijzigingen sinds revisie (%d wordt vergeleken met de huidige inhoud)"
+    CHANGES: "Wijzigingen"
+    NO_CHANGES: "Geen wijzigingen"
+    REVISIONS: "Revisies"
+    ADDED: "Toegevoegd"
+    REMOVED: "Verwijderd"
+    RENAMED: "Hernoemd"
+    PAGES: "Pagina's"
+    MANAGE_REVISIONS: "Revisies beheren"
+    MANAGE_REVISION: "Revisie beheren"
+    DELETE_ALL: "Alles verwijderen"
+    CURRENT: "Huidige revisie"

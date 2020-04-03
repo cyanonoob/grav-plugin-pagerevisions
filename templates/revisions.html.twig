@@ -8,21 +8,21 @@
 
     {% if action == 'diff' %}
       <a class="button" href="{{base_url}}/revisions{{ context.route }}"><i class="fa fa-reply"></i> {{ "PLUGIN_ADMIN.BACK"|tu }}</a>
-      <a class="button disable-after-click" href="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'revRevert' ~ '/rev' ~ config.system.param_sep ~ revision.name, 'admin-form', 'admin-nonce') }}" ><i class="fa fa-reply"></i> Revert</a>
-      <a class="button disable-after-click" href="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'revDelete' ~ '/rev' ~ config.system.param_sep ~ revision.name, 'admin-form', 'admin-nonce') }}" ><i class="fa fa-close"></i> Delete</a>
+      <a class="button disable-after-click" href="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'revRevert' ~ '/rev' ~ config.system.param_sep ~ revision.name, 'admin-form', 'admin-nonce') }}" ><i class="fa fa-reply"></i> {{"PLUGIN_PAGEREVISIONS.REVERT"|tu}}</a>
+      <a class="button disable-after-click" href="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'revDelete' ~ '/rev' ~ config.system.param_sep ~ revision.name, 'admin-form', 'admin-nonce') }}" ><i class="fa fa-close"></i> {{"PLUGIN_PAGEREVISIONS.DELETE"|tu}}</a>
     {% endif %}
 
     {% if action == 'list-pages' %}
-      <a class="button" href="#delete" data-remodal-target="delete" data-delete-url="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'revDeleteAll', 'admin-form', 'admin-nonce') }}"><i class="fa fa-close"></i> Delete All</a>
+      <a class="button" href="#delete" data-remodal-target="delete" data-delete-url="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'revDeleteAll', 'admin-form', 'admin-nonce') }}"><i class="fa fa-close"></i> {{"PLUGIN_PAGEREVISIONS.DELETE_ALL"|tu}}</a>
     {% endif %}
   </div>
 
-  {% if action == 'list-pages' or action == 'list-revisions' %}<h1><i class="fa fa-fw fa-file-text-o"></i> Manage Revisions</h1>{% endif %}
-  {% if action == 'diff' %}<h1><i class="fa fa-fw fa-file-text-o"></i> Manage Revision</h1>{% endif %}
+  {% if action == 'list-pages' or action == 'list-revisions' %}<h1><i class="fa fa-fw fa-file-text-o"></i> {{"PLUGIN_PAGEREVISIONS.MANAGE_REVISIONS"|tu}}</h1>{% endif %}
+  {% if action == 'diff' %}<h1><i class="fa fa-fw fa-file-text-o"></i> {{"PLUGIN_PAGEREVISIONS.MANAGE_REVISION"|tu}}</h1>{% endif %}
 {% endblock %}
 
 {% block content %}
-  <h1>{{ context.title ?: 'Pages' }}</h1>
+  <h1>{{ context.title ?: ("PLUGIN_PAGEREVISIONS.PAGES"|tu) }}</h1>
   <div class="revision-container">
     {% if action == 'list-pages' %}
       <div class="revision-list">
@@ -37,22 +37,22 @@
     {% endif %}
 
     {% if action == 'list-revisions' %}
-      <h2>Revisions</h2>
+      <h2>{{"PLUGIN_PAGEREVISIONS.REVISIONS"|tu}}</h2>
       <div class="revision-list">
         {% for revision in revisions.instances|reverse %}
           {% if loop.first %}
-            <div>{{ revision.name }} (Current)</div>
+            <div>{{ revision.name }} ({{revision.createdAt|date('d-m-y H:i:s')}}, {{"PLUGIN_PAGEREVISIONS.CURRENT"|tu}})</div>
           {% else %}
-            <div><a href="{{base_url}}/revisions{{ context.route }}/action:diff/rev:{{ revision.name }}">{{ revision.name }}</a> ({{ revision.createdAt|nicetime(true) }})</div>
+            <div><a href="{{base_url}}/revisions{{ context.route }}/action:diff/rev:{{ revision.name }}">{{ revision.name }}</a> ({{ revision.createdAt|date('d-m-y H:i:s') }})</div>
           {% endif %}
         {% endfor %}
       </div>
     {% endif %}
 
     {% if action == 'diff' %}
-      <p>All changes since the <strong>{{ revision.name }}</strong> revision (Comparing <strong>{{ revision.name }}</strong> to current content)</p>
+      <p>{{"PLUGIN_PAGEREVISIONS.CHANGES_SINCE"|tu(revision.name, revision.name)}}</p>
       {% if added is not empty %}
-        <h2>Added</h2>
+        <h2>{{"PLUGIN_PAGEREVISIONS.ADDED"|tu}}</h2>
         <ul>
         {% for file in added %}
           <li>{{ file }}</li>
@@ -61,7 +61,7 @@
       {% endif %}
 
       {% if removed is not empty %}
-        <h2>Removed</h2>
+        <h2>{{"PLUGIN_PAGEREVISIONS.REMOVED"|tu}}</h2>
         <ul>
         {% for file in removed %}
           <li>{{ file }}</li>
@@ -70,7 +70,7 @@
       {% endif %}
 
       {% if renamed is not empty %}
-        <h2>Renamed</h2>
+        <h2>{{"PLUGIN_PAGEREVISIONS.RENAMED"|tu}}</h2>
         <ul>
         {% for file in renamed %}
           <li>{{ file.from }} -> {{ file.to }}</li>
@@ -79,7 +79,7 @@
       {% endif %}
 
       {% if changed is not empty %}
-        <h2>Changes</h2>
+        <h2>{{"PLUGIN_PAGEREVISIONS.CHANGES"|tu}}</h2>
         <div>
         {% for file in changed %}
           <div class="revision-change revision-change--type-{{ file.type }}">
@@ -99,7 +99,7 @@
       {% endif %}
 
       {% if equal is not empty %}
-        <h2>No changes</h2>
+        <h2>{{"PLUGIN_PAGEREVISIONS.NO_CHANGES"|tu}}</h2>
         <ul>
         {% for file in equal %}
           <li>{{ file }}</li>
