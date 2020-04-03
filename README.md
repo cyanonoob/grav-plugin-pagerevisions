@@ -68,6 +68,9 @@ A **Revisions** link will appear in the **Admin** navigation sidebar. By navigat
 
 ## To Do
 
-- [ ] Translation support
+- [ ] Translation support - mostly done
+- [ ] Add more translations
+- [ ] ???
+- [ ] Non-profit
 
 
