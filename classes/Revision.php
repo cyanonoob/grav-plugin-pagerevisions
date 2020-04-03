@@ -3,7 +3,10 @@ namespace Grav\Plugin\Pagerevisions;
 
 use Grav\Common\Filesystem\Folder;
 use Grav\Plugin\Pagerevisions\Util;
-use Grav\Plugin\Pagerevisions\Diff;
+
+use SebastianBergmann\Diff\Differ;
+use SebastianBergmann\Diff\Output\DiffOnlyOutputBuilder;
+
 use Grav\Plugin\PagerevisionsPlugin;
 
 class Revision {
@@ -192,8 +195,11 @@ class Revision {
       if (strpos($mime, "text") === 0 || strpos($mime, "application") === 0) {
         // Handle text files
         $change = ['filename' => $change, 'type' => 'text'];
-        $diff = Diff::compare(file_get_contents($oldFile), file_get_contents($newFile), true);
-        $change['diff'] = Util::difftoHTML($diff);
+        $builder = new DiffOnlyOutputBuilder(
+          "--- Original\n+++ New\n"
+        );
+        $differ = new Differ($builder);
+        $change['diff'] = $differ->diff(file_get_contents($oldFile), file_get_contents($newFile));
       } else if (strpos($mime, "image") === 0) {
         // Handle image files
         $change = ['filename' => $change, 'type' => 'image'];
